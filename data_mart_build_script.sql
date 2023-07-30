@@ -1,5 +1,6 @@
 WITH report_dates (first_day_of_the_month, last_day_of_the_month) AS (
-	VALUES ('2023-07-01'::DATE, '2023-07-31'::DATE)
+	VALUES ('2023-07-01'::DATE, '2023-07-31'::DATE)   -- change this dates if you want to get 
+                                                      -- data mart for another month
 )
 SELECT
 	sps.shop_name,
@@ -17,7 +18,8 @@ FROM
 	JOIN products prs ON pl.product_id = prs.product_id,
 	(
         WITH report_dates (first_day_of_the_month, last_day_of_the_month) AS (
-            VALUES ('2023-07-01'::DATE, '2023-07-31'::DATE)
+            VALUES ('2023-07-01'::DATE, '2023-07-31'::DATE)   -- change this dates if you want to get 
+                                                              -- data mart for another month
         )
         SELECT
 			'dns' AS shop_name,
