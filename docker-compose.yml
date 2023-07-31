@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:latest
+    container_name: first_data_mart
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=shop_sales
+    volumes:
+      - ./init_script.sql:/docker-entrypoint-initdb.d/init_script.sql
+      - ./data_mart_build_script.sql:/data_marts_building_scripts/data_mart_build_script.sql
+    restart: always
